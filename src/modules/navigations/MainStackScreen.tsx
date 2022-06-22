@@ -1,20 +1,20 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
 import { RouteNames } from './routeName';
-import HomeScreen from '../screens/tutorialScreen/homeScreen';
-import LoginScreen from '../screens/tutorialScreen/loginScreen';
+import TutorialHomeScreen from '../screens/tutorialScreen/homeScreen';
+import TutorialLoginScreen from '../screens/tutorialScreen/loginScreen';
 
 export type MainStackParamList = {
-    HomeScreen: undefined,
-    LoginScreen: undefined,
+    TutorialHomeScreen: undefined,
+    TutorialLoginScreen: undefined,
 };
 
 const MainStack = createNativeStackNavigator<MainStackParamList>();
 
 const MainStackScreen = () => {
     return <MainStack.Navigator>
-        <MainStack.Screen name={RouteNames.HomeScreen} component={HomeScreen} />
-        <MainStack.Screen name={RouteNames.LoginScreen} component={LoginScreen} />
+        <MainStack.Screen name={RouteNames.TutorialHomeScreen} component={TutorialHomeScreen} />
+        <MainStack.Screen name={RouteNames.TutorialLoginScreen} component={TutorialLoginScreen} />
     </MainStack.Navigator>
 };
 

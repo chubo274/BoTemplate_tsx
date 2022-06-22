@@ -4,7 +4,7 @@ import { IPostLoginRequest } from "src/data/interfaces/request/user/IPostLoginRe
 import ResponseModel from "src/data/models/common/responseModel";
 import { UserModel } from "src/data/models/UserModel";
 import UserRepository from "src/data/repositories/user";
-import { loginEmailActionTypes, logOutActionTypes, logoutUserFailed, logoutUserSuccess, postLoginFailed, postLoginSuccess } from "../../actions/user";
+import { loginEmailActionTypes, logOutActionTypes, logoutUserFailed, logoutUserSuccess, postLoginFailed, postLoginSuccess } from "src/modules/redux/actions/tutorialAction/user";
 
 function* postLoginEmail(action: IAction<IPostLoginRequest>) {
     const { payload, callBacks } = action;

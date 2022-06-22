@@ -6,6 +6,6 @@ export enum RouteNames {
     TabStack = "TabStack",
 
     // Screen
-    LoginScreen = "LoginScreen",
-    HomeScreen = "HomeScreen",
+    TutorialLoginScreen = "TutorialLoginScreen",
+    TutorialHomeScreen = "TutorialHomeScreen",
 }

@@ -13,7 +13,6 @@ const RootStack = createNativeStackNavigator();
 
 const RootNavigator = () => {
     const userReducer: IReducer<UserModel> = useSelector((state: RootState) => state.userReducer.loginReducer);
-    console.log('userReducer', userReducer);
 
     return <RootStack.Navigator
         screenOptions={{
