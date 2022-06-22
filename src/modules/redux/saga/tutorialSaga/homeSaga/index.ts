@@ -5,8 +5,8 @@ import { IGetSectionRequest } from "src/data/interfaces/request/home/IGetSection
 import ResponseModel from "src/data/models/common/responseModel";
 import { PersonModel } from "src/data/models/PersonModel";
 import HomeRepository from "src/data/repositories/home/index";
-import { getDataActionTypes, getDataFailed, getDataSuccess, getSectionActionTypes, getSectionSuccess } from "../../actions/home";
-import { processCanLoadMore } from "../helper";
+import { getDataActionTypes, getDataFailed, getDataSuccess, getSectionActionTypes, getSectionSuccess } from "../../../actions/tutorialAction/home";
+import { processCanLoadMore } from "../../helper";
 
 //// DEMO LIST
 function* getData(action: IAction<IGetDataRequest>) {

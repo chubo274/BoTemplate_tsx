@@ -1,9 +1,9 @@
-import { IAction } from "../../../../data/interfaces/common";
-import { IGetDataRequest } from "../../../../data/interfaces/request/home/IGetDataRequest";
-import { IGetSectionRequest } from "../../../../data/interfaces/request/home/IGetSectionRequest";
-import { PersonModel } from "../../../../data/models/PersonModel";
-import { GET_DATA, GET_SECTION } from "../actionTypes";
-import { createActionNormalTypes, createActionListTypes, createActionSectionTypes } from "../helper";
+import { IAction } from "src/data/interfaces/common";
+import { IGetDataRequest } from "src/data/interfaces/request/home/IGetDataRequest";
+import { IGetSectionRequest } from "src/data/interfaces/request/home/IGetSectionRequest";
+import { PersonModel } from "src/data/models/PersonModel";
+import { GET_DATA, GET_SECTION } from "../../actionTypes";
+import { createActionNormalTypes, createActionListTypes, createActionSectionTypes } from "../../helper";
 
 export const getDataTypes = GET_DATA;
 export const getDataActionTypes = createActionListTypes(getDataTypes);

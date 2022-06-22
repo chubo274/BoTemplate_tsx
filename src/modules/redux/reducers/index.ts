@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
-import { logOutActionTypes } from "../actions/user";
-import { homeReducer } from "./homeReducer";
-import { userReducer } from "./userReducer";
+import { logOutActionTypes } from "../actions/tutorialAction/user";
+import { homeReducer } from "./tutorialReducer/homeReducer";
+import { userReducer } from "./tutorialReducer/userReducer";
 import { generalReducer } from "./generalReducer";
 
 const appReducer = combineReducers({

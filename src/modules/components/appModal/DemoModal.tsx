@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { IDictionary, IReducer } from "src/data/interfaces/common";
 import { IGetSectionRequest } from "src/data/interfaces/request/home/IGetSectionRequest";
 import { PersonModel } from "src/data/models/PersonModel";
-import { getSectionRequest } from "src/modules/redux/actions/home";
+import { getSectionRequest } from "src/modules/redux/actions/tutorialAction/home";
 import { RootState } from "src/modules/redux/reducers";
 import theme from "src/shared/theme";
 import { AppText } from "../appText";

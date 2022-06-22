@@ -4,7 +4,7 @@ import React, { useCallback } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { MainStackParamList } from 'src/modules/navigations/MainStackScreen';
-import { postLoginRequest } from 'src/modules/redux/actions/user';
+import { postLoginRequest } from 'src/modules/redux/actions/tutorialAction/user';
 import { RouteNames } from 'src/modules/navigations/routeName';
 import { AppLanguage, getString } from 'src/shared/localization';
 import theme from 'src/shared/theme';
@@ -13,18 +13,18 @@ import { changeLanguage } from 'src/modules/redux/actions/general';
 import { IReducer } from 'src/data/interfaces/common';
 import { RootState } from 'src/modules/redux/reducers';
 
-const LoginScreen = () => {
+const TutorialLoginScreen = () => {
     const dispatch = useDispatch();
     const navigation = useNavigation<NativeStackNavigationProp<MainStackParamList>>();
     const languageReducer: IReducer<AppLanguage> = useSelector((state: RootState) => state.generalReducer.languageReducer);
 
     const onLogin = useCallback(() => {
-        dispatch(postLoginRequest({
-            grantType: "password",
-            email: "liffu@yopmail.com",
-            password: "Admin123!"
-        }));
-        // navigation.navigate(RouteNames.HomeScreen);
+        // dispatch(postLoginRequest({
+        //     grantType: "password",
+        //     email: "liffu@yopmail.com",
+        //     password: "Admin123!"
+        // }));
+        navigation.navigate(RouteNames.TutorialHomeScreen);
     }, []);
 
     const onChangeLanguage = () => {
@@ -62,4 +62,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default LoginScreen;
+export default TutorialLoginScreen;
