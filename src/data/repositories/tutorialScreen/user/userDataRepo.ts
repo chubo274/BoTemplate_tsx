@@ -3,7 +3,7 @@ import { baseUrl, urls } from "src/data/api/resource";
 import { IPostLoginRequest } from "src/data/interfaces/request/user/IPostLoginRequest";
 import ResponseModel from "src/data/models/common/responseModel";
 import { UserModel } from "src/data/models/UserModel";
-import UserRepository from ".";
+import { localStoreUserRepo } from "./localStoreUserRepo";
 
 export interface ISessionStorage {
     token?: string;
@@ -19,6 +19,7 @@ const SessionStorage: ISessionStorage = {
 };
 
 export const userDataRepo = () => {
+    const { setUser, getUser, removeUser, updateUser } = localStoreUserRepo();
     const login = async (body: IPostLoginRequest): Promise<ResponseModel<UserModel>> => {
         const resource = `${baseUrl}${urls.loginEmail}`;
         const apiGateway = new ApiGateway({
@@ -31,12 +32,12 @@ export const userDataRepo = () => {
             const responseParsed = UserModel.parseFromJson(response?.data);
             SessionStorage.token = responseParsed.token;
             SessionStorage.refreshToken = responseParsed.refreshToken;
-            await UserRepository.setUser(responseParsed);
+            await setUser(responseParsed);
             return ResponseModel.createSuccess(responseParsed);
         } else {
             return ResponseModel.createError(
-                400,
-                "400",
+                response.statusCode,
+                response.statusCode.toString(),
                 response.message,
                 response.rawError
             );
@@ -50,7 +51,7 @@ export const userDataRepo = () => {
     const logout = async (): Promise<ResponseModel<boolean>> => {
         SessionStorage.token = '',
             SessionStorage.refreshToken = '',
-            await UserRepository.removeUser();
+            await removeUser();
         return ResponseModel.createSuccess(true);
     }
 

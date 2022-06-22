@@ -1,6 +1,6 @@
 import { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
 import Config from 'src/configs/config';
-import UserRepository from 'src/data/repositories/user';
+import { UserRepository } from 'src/data/repositories/tutorialScreen/user';
 import Interceptor from '../Interceptor';
 
 type RefreshTokenCallback = (token: string, refreshToken?: string) => void
@@ -8,7 +8,7 @@ type RefreshTokenCallback = (token: string, refreshToken?: string) => void
 let isRefreshing = false;
 let refreshSubscribers: RefreshTokenCallback[] = [];
 
-export default class RetryInterceptor extends Interceptor {
+export class RetryInterceptor extends Interceptor {
     axiosInstance: AxiosInstance;
     _userRepository: typeof UserRepository;
 

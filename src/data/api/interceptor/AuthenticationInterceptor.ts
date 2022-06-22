@@ -1,7 +1,7 @@
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
 import qs from 'qs';
 import Config from 'src/configs/config';
-import UserRepository from 'src/data/repositories/user';
+import { UserRepository } from 'src/data/repositories/tutorialScreen/user';
 import Interceptor from '../Interceptor';
 
 export default class AuthenticationInterceptor extends Interceptor {

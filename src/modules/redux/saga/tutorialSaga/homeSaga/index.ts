@@ -4,7 +4,7 @@ import { IGetDataRequest } from "src/data/interfaces/request/home/IGetDataReques
 import { IGetSectionRequest } from "src/data/interfaces/request/home/IGetSectionRequest";
 import ResponseModel from "src/data/models/common/responseModel";
 import { PersonModel } from "src/data/models/PersonModel";
-import HomeRepository from "src/data/repositories/home/index";
+import { HomeRepository } from "src/data/repositories/tutorialScreen/home/index";
 import { getDataActionTypes, getDataFailed, getDataSuccess, getSectionActionTypes, getSectionSuccess } from "../../../actions/tutorialAction/home";
 import { processCanLoadMore } from "../../helper";
 

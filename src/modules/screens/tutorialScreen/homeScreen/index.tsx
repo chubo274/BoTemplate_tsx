@@ -15,15 +15,11 @@ import { AppModal } from 'src/modules/components/appModal';
 import { DemoModalContent } from 'src/modules/components/appModal/DemoModal';
 import { AppText } from 'src/modules/components/appText';
 import { ImageRender } from 'src/modules/components/image/ImageRender';
-import { getString } from 'src/shared/localization';
 import { getDataLoadMore, getDataRefresh, getDataRequest } from 'src/modules/redux/actions/tutorialAction/home';
 import { logoutUser } from 'src/modules/redux/actions/tutorialAction/user';
 import { RootState } from 'src/modules/redux/reducers';
+import { getString } from 'src/shared/localization';
 import theme from 'src/shared/theme';
-
-interface ITest {
-    name: string;
-}
 
 const TutorialHomeScreen = () => {
     const dispatch = useDispatch();
