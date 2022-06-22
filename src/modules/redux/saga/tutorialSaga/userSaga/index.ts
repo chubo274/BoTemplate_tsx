@@ -3,7 +3,7 @@ import { IAction } from "src/data/interfaces/common";
 import { IPostLoginRequest } from "src/data/interfaces/request/user/IPostLoginRequest";
 import ResponseModel from "src/data/models/common/responseModel";
 import { UserModel } from "src/data/models/UserModel";
-import UserRepository from "src/data/repositories/user";
+import { UserRepository } from "src/data/repositories/tutorialScreen/user";
 import { loginEmailActionTypes, logOutActionTypes, logoutUserFailed, logoutUserSuccess, postLoginFailed, postLoginSuccess } from "src/modules/redux/actions/tutorialAction/user";
 
 function* postLoginEmail(action: IAction<IPostLoginRequest>) {

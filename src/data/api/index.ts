@@ -4,7 +4,7 @@ import Config from 'src/configs/config';
 import { parseFormData } from 'src/shared/helpers/function';
 import Interceptor from './Interceptor';
 import AuthenticationInterceptor from './interceptor/AuthenticationInterceptor';
-import RetryInterceptor from './interceptor/RetryInterceptor';
+import { RetryInterceptor } from './interceptor/RetryInterceptor';
 
 export type HTTPMethod = 'POST' | 'GET' | 'PUT' | 'PATCH' | 'DELETE';
 

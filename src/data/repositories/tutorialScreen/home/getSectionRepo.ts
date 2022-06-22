@@ -1,8 +1,7 @@
 import { isArray } from "lodash";
-import { urls } from "../../api/resource";
-
-import ResponseModel from "../../models/common/responseModel";
-import { PersonModel } from "../../models/PersonModel";
+import ResponseModel from "src/data/models/common/responseModel";
+import { PersonModel } from "src/data/models/PersonModel";
+import { urls } from "../../../api/resource";
 
 const dataSectionOfAlice = [
     {
@@ -34,8 +33,8 @@ export const getSectionRepo = () => {
             return ResponseModel.createSuccess(responseParsed);
         } else {
             return ResponseModel.createError(
-                400,
-                "400",
+                response.statusCode,
+                response.statusCode.toString(),
                 response.message,
                 response.rawError
             );
@@ -49,8 +48,8 @@ export const getSectionRepo = () => {
             return ResponseModel.createSuccess(responseParsed);
         } else {
             return ResponseModel.createError(
-                400,
-                "400",
+                response.statusCode,
+                response.statusCode.toString(),
                 response.message,
                 response.rawError
             );
