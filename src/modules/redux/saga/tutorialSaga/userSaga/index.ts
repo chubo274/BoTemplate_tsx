@@ -11,7 +11,7 @@ function* postLoginEmail(action: IAction<IPostLoginRequest>) {
     try {
         const response: ResponseModel<UserModel> = yield UserRepository.login(payload!);
         if (response.statusCode === 200 && response.data) {
-            yield put(postLoginSuccess(response.data!, { request: payload }));
+            yield put(postLoginSuccess(response.data, { request: payload }));
             callBacks && callBacks?.onSuccess && callBacks?.onSuccess();
         } else {
             yield put(postLoginFailed(response.message));

@@ -14,10 +14,7 @@ function* getData(action: IAction<IGetDataRequest>) {
     try {
         const response: ResponseModel<PersonModel[]> = yield HomeRepository.getData();
         if (response.statusCode === 200 && response.data) {
-            yield put(getDataSuccess(response.data!, {
-                request: payload,
-                isAppend: false,
-            }));
+            yield put(getDataSuccess(response.data, { request: payload, isAppend: false }));
             callBacks && callBacks?.onSuccess && callBacks?.onSuccess();
         } else {
             yield put(getDataFailed(response.message));
@@ -34,7 +31,7 @@ function* getDataMore(action: IAction<IGetDataRequest>) {
     try {
         const response: ResponseModel<PersonModel[]> = yield HomeRepository.fakeGetDataLoadMore();
         if (response.statusCode === 200 && response.data) {
-            yield put(getDataSuccess(response.data!, {
+            yield put(getDataSuccess(response.data, {
                 request: payload,
                 isAppend: true,
                 canLoadMore: processCanLoadMore(response?.data, payload?.pageSize),
@@ -56,7 +53,7 @@ function* getSection(action: IAction<IGetSectionRequest>) {
     try {
         const response: ResponseModel<PersonModel[]> = yield HomeRepository.getSection(payload?.sectionId!);
         if (response.statusCode === 200 && response.data) {
-            yield put(getSectionSuccess(response.data!, {
+            yield put(getSectionSuccess(response.data, {
                 sectionId: payload?.sectionId?.toString(),
                 request: payload,
             }));
@@ -75,12 +72,14 @@ function* getSectionMore(action: IAction<IGetSectionRequest>) {
     const { payload, callBacks } = action;
     try {
         const response: ResponseModel<PersonModel[]> = yield HomeRepository.getSectionLoadMore(payload?.sectionId!);
-        yield put(getSectionSuccess(response.data!, {
-            sectionId: payload?.sectionId?.toString(),
-            request: payload,
-            isAppend: true,
-            canLoadMore: processCanLoadMore(response?.data, payload?.pageSize),
-        }));
+        if (response.statusCode === 200 && response.data) {
+            yield put(getSectionSuccess(response.data, {
+                sectionId: payload?.sectionId?.toString(),
+                request: payload,
+                isAppend: true,
+                canLoadMore: processCanLoadMore(response?.data, payload?.pageSize),
+            }));
+        }
         callBacks && callBacks?.onSuccess && callBacks?.onSuccess();
     } catch (error) {
         yield put(getDataFailed(error));

@@ -1,12 +1,18 @@
-import { Vibration } from "react-native";
 import { ActionStatus } from "../../../shared/helpers/constant";
 
 export interface IDictionary<T> {
     [key: string]: T;
 }
 
-export interface IActionParams {
-    request?: any;
+export interface IActionCallBacks {
+    onSuccess?: (data?: any) => void;
+    onFailed?: (error?: string) => void;
+
+    [key: string]: any;
+}
+
+export interface IActionParams<T> {
+    request?: T;
     sectionId?: string;
     isAppend?: boolean;
     canLoadMore?: boolean | IDictionary<boolean>;
@@ -17,12 +23,9 @@ export interface IActionParams {
 export interface IAction<T> {
     type: string;
     payload?: T;
-    params?: IActionParams;
+    params?: IActionParams<any>;
     error?: any;
-    callBacks?: {
-        onSuccess?: (data?: any) => void;
-        onFailed?: (error?: string) => void;
-    };
+    callBacks?: IActionCallBacks;
 
     [key: string]: any;
 }
@@ -32,7 +35,7 @@ export interface IReducer<T> {
     status: ActionStatus;
     data?: T;
     canLoadMore?: boolean | IDictionary<boolean>;
-    params?: IActionParams;
+    params?: IActionParams<any>;
     errorMessage?: string;
     error?: any;
     actionType: string;
