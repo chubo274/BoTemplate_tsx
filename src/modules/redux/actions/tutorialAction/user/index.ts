@@ -1,4 +1,4 @@
-import { IAction } from "src/data/interfaces/common";
+import { IAction, IActionCallBacks, IActionParams } from "src/data/interfaces/common";
 import { IPostLoginRequest } from "src/data/interfaces/request/user/IPostLoginRequest";
 import { UserModel } from "src/data/models/UserModel";
 import { LOGOUT_USER, POST_LOGIN } from "../../actionTypes";
@@ -10,7 +10,7 @@ export const loginEmailActionTypes = createActionNormalTypes(loginEmailTypes);
 
 export const postLoginRequest = (
     payload: IPostLoginRequest,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<IPostLoginRequest> => ({
     type: loginEmailActionTypes.start,
     payload: payload,
@@ -19,8 +19,8 @@ export const postLoginRequest = (
 
 export const postLoginSuccess = (
     payload: UserModel,
-    params: { request?: IPostLoginRequest },
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    params: IActionParams<IPostLoginRequest>,
+    callBacks?: IActionCallBacks
 ): IAction<UserModel> => ({
     type: loginEmailActionTypes.success,
     payload,
@@ -30,7 +30,7 @@ export const postLoginSuccess = (
 
 export const postLoginFailed = (
     payload: any,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<any> => ({
     type: loginEmailActionTypes.failed,
     payload,

@@ -1,4 +1,4 @@
-import { IAction } from "src/data/interfaces/common";
+import { IAction, IActionCallBacks, IActionParams } from "src/data/interfaces/common";
 import { IGetDataRequest } from "src/data/interfaces/request/home/IGetDataRequest";
 import { IGetSectionRequest } from "src/data/interfaces/request/home/IGetSectionRequest";
 import { PersonModel } from "src/data/models/PersonModel";
@@ -11,7 +11,7 @@ export const getDataActionTypes = createActionListTypes(getDataTypes);
 
 export const getDataRequest = (
     payload: IGetDataRequest,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<IGetDataRequest> => ({
     type: getDataActionTypes.start,
     payload: payload,
@@ -20,10 +20,8 @@ export const getDataRequest = (
 
 export const getDataSuccess = (
     payload: PersonModel[],
-    params: {
-        request?: IGetDataRequest, isAppend?: boolean, canLoadMore?: boolean
-    },
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    params: IActionParams<IGetDataRequest>,
+    callBacks?: IActionCallBacks
 ): IAction<PersonModel[]> => ({
     type: getDataActionTypes.listSuccess,
     payload,
@@ -33,7 +31,7 @@ export const getDataSuccess = (
 
 export const getDataFailed = (
     payload: any,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<any> => ({
     type: getDataActionTypes.failed,
     payload,
@@ -42,7 +40,7 @@ export const getDataFailed = (
 
 export const getDataRefresh = (
     payload: IGetDataRequest,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<IGetDataRequest> => ({
     type: getDataActionTypes.listRefresh,
     payload: payload,
@@ -51,7 +49,7 @@ export const getDataRefresh = (
 
 export const getDataLoadMore = (
     payload: IGetDataRequest,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<IGetDataRequest> => ({
     type: getDataActionTypes.listLoadMore,
     payload: payload,
@@ -64,7 +62,7 @@ export const getSectionActionTypes = createActionSectionTypes(getSectionTypes);
 
 export const getSectionRequest = (
     payload: IGetSectionRequest,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<IGetSectionRequest> => ({
     type: getSectionActionTypes.start,
     payload: payload,
@@ -73,10 +71,8 @@ export const getSectionRequest = (
 
 export const getSectionSuccess = (
     payload: PersonModel[],
-    params: {
-        sectionId?: string, request?: IGetSectionRequest, isAppend?: boolean, canLoadMore?: boolean
-    },
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    params: IActionParams<IGetSectionRequest>,
+    callBacks?: IActionCallBacks
 ): IAction<PersonModel[]> => ({
     type: getSectionActionTypes.sectionSuccess,
     payload,
@@ -86,7 +82,7 @@ export const getSectionSuccess = (
 
 export const getSectionFailed = (
     payload: any,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<any> => ({
     type: getSectionActionTypes.failed,
     payload,
@@ -95,7 +91,7 @@ export const getSectionFailed = (
 
 export const getSectionRefresh = (
     payload: IGetSectionRequest,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<IGetSectionRequest> => ({
     type: getSectionActionTypes.sectionRefresh,
     payload: payload,
@@ -104,7 +100,7 @@ export const getSectionRefresh = (
 
 export const getSectionLoadMore = (
     payload: IGetSectionRequest,
-    callBacks?: { onSuccess?: (data?: any) => void; onFailed?: (error?: string) => void }
+    callBacks?: IActionCallBacks
 ): IAction<IGetSectionRequest> => ({
     type: getSectionActionTypes.sectionLoadMore,
     payload: payload,
