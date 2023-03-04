@@ -1,7 +1,6 @@
 # BoTemplate_tsx
 setup structure, navigation, i18n, helper
 <h4 align="center">Project structure:</h4>
-```bash```
 📦app
  ┣ 📂assets
  ┃ ┣ 📂fonts
@@ -35,4 +34,3 @@ setup structure, navigation, i18n, helper
  ┃ ┣ 📂moduleLib
  ┃ ┗ 📂theme                #about font, globalstyle, spacing, color using context to change theme
  ┗ 📜App.tsx
-```
