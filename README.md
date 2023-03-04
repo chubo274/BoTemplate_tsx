@@ -1,5 +1,4 @@
-<h3 align="center">SSM mobile app for parent.</h3>
-<h4 align="center">Project structure:</h4>
+<h4 align="left">Project structure:</h4>
 <div>📦app</div>
 <div> ┣ 📂assets</div>
 <div> ┃ ┣ 📂fonts</div>
